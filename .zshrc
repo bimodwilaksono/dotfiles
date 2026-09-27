@@ -1,0 +1,98 @@
+autoload -Uz compinit && compinit -i
+alias ls="eza --icons"
+alias c="clear"
+alias cd="z"
+alias inf="infisical"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export APPLICATIONS_HOME=$HOME/Applications
+export DEVELOPER_HOME=$HOME/Developer
+# export PREFIX="$HOME/.local"
+export HOMEBREW_PREFIX="$HOME/.local"
+export HOMEBREW_CELLAR="$HOMEBREW_PREFIX/Cellar"
+export HOMEBREW_REPOSITORY="$HOMEBREW_PREFIX/Homebrew"
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications --fontdir=~/Library/Fonts"
+# export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
+# export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
+# export REACT_EDITOR="code"
+
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmake/3.22.1/bin
+export PATH="$APPLICATIONS_HOME/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+export PATH="$PATH:$HOME/.bun/bin"
+export PATH="$PATH:$HOME/go/bin"
+# export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
+
+
+
+
+alias pod="~/.local/bin/pod"
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# bun completions
+[ -s "/Users/itbsp44/.bun/_bun" ] && source "/Users/itbsp44/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+function set_win_title(){
+    echo -ne "\033]0; $(basename "$PWD") \007"
+}
+starship_precmd_user_func="set_win_title"
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Oh My Zsh Git plugin (local copy)
+[ -f ~/.config/git.plugin.zsh ] && source ~/.config/git.plugin.zsh
+
+# opencode
+export PATH=/Users/itbsp44/.opencode/bin:$PATH
+
+# Added by Antigravity
+export PATH="/Users/itbsp44/.antigravity/antigravity/bin:$PATH"
+
+# Auto-activate Python venv
+autoload -U add-zsh-hook
+load-venv() {
+  # Check if we are inside a venv currently
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    # Deactivate if we leave the project directory
+    if [[ ! "$PWD" =~ ^"$(dirname "$VIRTUAL_ENV")" ]]; then
+      deactivate
+    fi
+  fi
+
+  # Activate if we find a venv or .venv folder
+  if [[ -f venv/bin/activate ]]; then
+    source venv/bin/activate
+  elif [[ -f .venv/bin/activate ]]; then
+    source .venv/bin/activate
+  fi
+}
+add-zsh-hook chpwd load-venv
+load-venv # Run once on startup
+
+
+# Mole shell completion
+if output="$(mole completion zsh 2>/dev/null)"; then eval "$output"; fi
+
+# maestro-runner
+export PATH="$HOME/.maestro-runner/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/itbsp44/.local/bin:$PATH"
+
+# Added by Antigravity IDE
+export PATH="/Users/itbsp44/.antigravity-ide/antigravity-ide/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
