@@ -1,0 +1,40 @@
+{
+  "agentSkills": {
+    "cliVersion": "1.7.1",
+    "agents": ["antigravity", "claude-code", "codex", "zed", "opencode"],
+    "sources": [
+      {
+        "repository": "callstackincubator/agent-skills",
+        "skills": ["react-native-best-practices", "upgrading-react-native"]
+      },
+      {
+        "repository": "vercel-labs/skills",
+        "skills": ["find-skills"]
+      },
+      {
+        "repository": "oxc-project/oxc",
+        "skills": ["migrate-oxlint"]
+      },
+      {
+        "repository": "JuliusBrussee/caveman",
+        "skills": ["caveman", "caveman-commit", "caveman-compress", "caveman-help", "caveman-review"]
+      },
+      {
+        "repository": "callstack/agent-device",
+        "skills": ["agent-device", "dogfood"]
+      },
+      {
+        "repository": "mattpocock/skills",
+        "skills": ["grill-me"]
+      },
+      {
+        "repository": "miqdadbadjuber/anti-slop",
+        "skills": ["antislop", "antislop-code", "antislop-copywriting", "antislop-human", "antislop-layoutmobile", "antislop-ui"]
+      },
+      {
+        "repository": "dietrichgebert/ponytail",
+        "skills": ["ponytail"]
+      }
+    ]
+  }
+}

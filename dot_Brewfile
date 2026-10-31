@@ -1,0 +1,23 @@
+# Shared tools
+brew "chezmoi"
+brew "git"
+brew "fnm"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+
+# Editors and terminal
+brew "neovim"
+cask "zed"
+cask "ghostty"
+
+# Go
+brew "go"
+go "golang.org/x/tools/gopls"
+go "honnef.co/go/tools/cmd/staticcheck"
+
+# React Native / mobile
+brew "watchman"
+brew "cocoapods"
+cask "android-studio"
+cask "xcodes-app"

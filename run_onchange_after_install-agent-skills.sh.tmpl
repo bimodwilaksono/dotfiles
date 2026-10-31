@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+readonly CLI_VERSION={{ .agentSkills.cliVersion | quote }}
+readonly -a AGENTS=({{ range .agentSkills.agents }}{{ . | quote }} {{ end }})
+
+run_skills() {
+  if command -v fnm >/dev/null 2>&1; then
+    fnm exec --using=22 npx --yes "skills@${CLI_VERSION}" "$@"
+    return
+  fi
+
+  if ! command -v node >/dev/null 2>&1 || ! command -v npx >/dev/null 2>&1; then
+    echo "agent skills: Node.js 22.20+ and npx are required; install them, then run 'chezmoi apply' again" >&2
+    exit 1
+  fi
+  if ! node -e 'const [major, minor] = process.versions.node.split(".").map(Number); process.exit(major > 22 || (major === 22 && minor >= 20) ? 0 : 1)'; then
+    echo "agent skills: the pinned skills CLI requires Node.js 22.20 or newer" >&2
+    exit 1
+  fi
+
+  npx --yes "skills@${CLI_VERSION}" "$@"
+}
+
+install_source() {
+  local source=$1
+  shift
+
+  local args=(add "$source" --global --agent "${AGENTS[@]}" --yes)
+  local skill
+  for skill in "$@"; do
+    args+=(--skill "$skill")
+  done
+
+  run_skills "${args[@]}"
+}
+
+{{ range .agentSkills.sources -}}
+install_source {{ .repository | quote }}{{ range .skills }} {{ . | quote }}{{ end }}
+{{ end -}}
+install_source {{ joinPath .chezmoi.sourceDir "agent-skills/hot-updater" | quote }} "hot-updater"
+install_source {{ joinPath .chezmoi.sourceDir "agent-skills/codex-orchestrator" | quote }} "codex-orchestrator"

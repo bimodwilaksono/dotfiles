@@ -1,0 +1,135 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "auto_update": false,
+  "edit_predictions": {
+    "allow_data_collection": "no"
+  },
+  "proxy": "",
+  "cli_default_open_behavior": "new_window",
+  "outline_panel": {
+    "dock": "left",
+  },
+  "collaboration_panel": {
+    "dock": "left",
+  },
+  "git_panel": {
+    "show_count_badge": false,
+    "file_icons": true,
+    "dock": "left",
+    "tree_view": false,
+  },
+  "format_on_save": "on",
+  "context_servers": {
+    "mcp-server-context7": {
+      "enabled": true,
+      "settings": {
+        "context7_api_key": "",
+      },
+    },
+  },
+  "agent": {
+    "dock": "right",
+    "default_model": {
+      "provider": "openrouter",
+      "model": "x-ai/grok-code-fast-1",
+      "enable_thinking": true,
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "agent_servers": {
+    "codex-acp": {
+      "default_config_options": {
+        "reasoning_effort": "medium",
+        "model": "gpt-6.1-sol",
+        "collaboration_mode": "default"
+      },
+      "type": "registry"
+    },
+    "gemini": {
+      "type": "registry"
+    },
+    "opencode": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry",
+      "env": {
+        "ANTHROPIC_BASE_URL": "http://localhost:8082",
+        "ANTHROPIC_AUTH_TOKEN": "dummy",
+      },
+    },
+  },
+  "project_panel": {
+    "git_status_indicator": true,
+    "dock": "right",
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "terminal": {
+    "blinking": "on",
+  },
+  "base_keymap": "VSCode",
+  "show_signature_help_after_edits": false,
+  "auto_signature_help": false,
+  "relative_line_numbers": "enabled",
+  "sticky_scroll": {
+    "enabled": true,
+  },
+  "gutter": {
+    "line_numbers": true,
+  },
+  "minimap": {
+    "show": "never",
+  },
+  "current_line_highlight": "gutter",
+  "cursor_shape": "block",
+  "cursor_blink": true,
+  "file_types": {
+    "php": ["*.php"],
+    "css": ["*.css"],
+    "javascriptreact": ["*.js"],
+  },
+  "linked_edits": true,
+  "show_whitespaces": "none",
+  "tab_size": 2,
+  "ui_font_size": 16,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Ayu Dark",
+  },
+  "languages": {
+    "JavaScript": {
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TypeScript": {
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "TSX": {
+      "formatter": [],
+      "code_actions_on_format": {
+        "source.fixAll.eslint": true,
+      },
+    },
+    "JSON": {
+      "format_on_save": "off",
+    },
+  },
+}
